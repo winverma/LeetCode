@@ -6,9 +6,10 @@ class Solution
         int sum = 0;
         int value = 0;
 
-        for (int i = 0; i < len; i++) 
+        char [] chars = columnTitle.toCharArray();
+
+        for (char c : chars) 
         {
-            char c = columnTitle.charAt(i);
             value = c - 'A' + 1;
             sum = sum * 26 + value;
         }
