@@ -1,3 +1,3 @@
 # LeetCode
 
-All my submissions on LeetCode, in one repository!
+All my submissions on LeetCode. In this repository! :)
