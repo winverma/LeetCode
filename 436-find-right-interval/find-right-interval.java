@@ -1,22 +1,19 @@
+import java.util.*;
+
 public class Solution 
 {
-    public int [] findRightInterval(int [] [] intervals) 
+    public int[] findRightInterval(int[][] intervals) 
     {
-        int n = intervals.length;
-        int [] result = new int[n];
         TreeMap<Integer, Integer> map = new TreeMap<>();
+        int[] result = new int[intervals.length];
         
-        for (int i = 0; i < n; i++) 
-        {
+        for (int i = 0; i < intervals.length; i++)
             map.put(intervals[i][0], i);
-        }
         
-        for (int i = 0; i < n; i++) 
-        {
-            Map.Entry<Integer, Integer> entry = map.ceilingEntry(intervals[i][1]);
-            result[i] = (entry != null) ? entry.getValue() : -1;
-        }
+        Arrays.setAll(result, i -> map.ceilingEntry(intervals[i][1]) != null 
+                                    ? map.ceilingEntry(intervals[i][1]).getValue() : -1);
         
         return result;
     }
 }
+
