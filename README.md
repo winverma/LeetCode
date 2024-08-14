@@ -1,6 +1,6 @@
 # LeetCode
 
-<p style="text-align: center; font-family: 'Arial', sans-serif; font-size: 18px; color: #4CAF50; margin-top: 20px;">All my submissions on LeetCode. In this Repository! :)</p>
+<p align="center">All my submissions on LeetCode. In this Repository! :)</p>
 
 
 <p align="center">
