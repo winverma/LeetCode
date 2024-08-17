@@ -1,6 +1,6 @@
 # LeetCode
 
-<p align="center">All my submissions on LeetCode. In this Repository! :)</p>
+<p align="center">All my submissions on LeetCode T_T</p>
 
 
 <p align="center">
