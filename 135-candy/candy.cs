@@ -1,5 +1,7 @@
-public class Solution {
-    public int Candy(int[] ratings) {
+public class Solution 
+{
+    public int Candy(int[] ratings) 
+    {
         int len = ratings.Length;
         int [] alloc = new int [len];
 
