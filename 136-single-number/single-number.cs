@@ -2,14 +2,13 @@ public class Solution
 {
     public int SingleNumber(int[] nums) 
     {
-        int len = nums.Length;
-        int result = 0;;
+        int result = 0;
 
-
-        for(int i = 0; i < len; i++)
+        foreach(int num in nums)
         {
-            result = result^nums[i];
+            result ^= num;
         }
-        return result;     
+
+        return result;   
     }
 }
