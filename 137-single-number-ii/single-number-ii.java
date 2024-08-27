@@ -4,12 +4,13 @@ class Solution
     {
         return singleNumberA2(nums);
     }
+
     public int singleNumberA2(int[] nums) 
     {
         int ones = 0;
         int twice = 0;
 
-        for(int num: nums)
+        for(int num : nums)
         {
             ones = (ones^num) & (~twice);
             twice = (twice^num) & (~ones);
@@ -28,12 +29,12 @@ class Solution
 
             for(int num : nums)
             {
-                if((num&(1<<i))!=0) count++;
+                if((num&(1<<i)) != 0) count++;
             }
 
-            if(count%3 !=0) ans|=(1<<i);
+            if(count%3 != 0) ans |= (1<<i);
         }
-        
+
         return ans;
     }
 }
