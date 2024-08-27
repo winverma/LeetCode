@@ -2,25 +2,38 @@ class Solution
 {
     public int singleNumber(int[] nums) 
     {
-        int ans = 0;
-        // Iterate through each bit position (0 to 31)
-        for (int i = 31; i >= 0; i--) {
-            int sum = 0;
-            // Count how many numbers have the ith bit set
-            for (int num : nums) {
-                int n = (num >> i);
-                if ((n & 1) == 1) {
-                    sum++;
-                }
-            }
-            // If sum is not a multiple of 3, the unique number has this bit set
-            sum = sum % 3;
-            // Shift ans left before adding the bit
-            ans = (ans << 1);
-            if (sum != 0) {
-                ans += 1;
-            }
+        return singleNumberA2(nums);
+    }
+    public int singleNumberA2(int[] nums) 
+    {
+        int ones = 0;
+        int twice = 0;
+
+        for(int num: nums)
+        {
+            ones = (ones^num) & (~twice);
+            twice = (twice^num) & (~ones);
         }
+
+        return ones;
+    }
+
+    public int singleNumberA1(int[] nums) 
+    {
+        int ans = 0;
+
+        for(int i = 0; i < 32; i++)
+        {
+            int count = 0;
+
+            for(int num : nums)
+            {
+                if((num&(1<<i))!=0) count++;
+            }
+
+            if(count%3 !=0) ans|=(1<<i);
+        }
+        
         return ans;
     }
 }
