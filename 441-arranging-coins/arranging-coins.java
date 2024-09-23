@@ -17,8 +17,10 @@ class Solution
 
         x = sqrt(2n + 0.25) - 0.5
 
+        so: return (int) (Math.sqrt(2) * Math.sqrt(n + 0.125) - 0.5);
+
         */
-        
+
         long low  = 0;
         long high = n;
 
