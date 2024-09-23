@@ -15,7 +15,7 @@ class Solution
 
         x + 0.5 = sqrt(2n + 0.25)
 
-        x = sqrt(2n + 0.25) - 0.5
+        x = sqrt(2n + 0.25) - 0.5 = [✓2 * ✓(n + 0.125)] - 0.5
 
         so: return (int) (Math.sqrt(2) * Math.sqrt(n + 0.125) - 0.5);
 
