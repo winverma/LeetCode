@@ -2,31 +2,44 @@ class Solution
 {
     public int maxVowels(String s, int k) 
     {
-        int len = s.length();
-        char [] chars = s.toCharArray();
+        HashSet<Character> vowels = new HashSet<>();
+        vowels.add('a');
+        vowels.add('e');
+        vowels.add('i');
+        vowels.add('o');
+        vowels.add('u');
 
-        int sum = 0;
+        int maxVowelsCount = 0;
+        int currentVowelsCount = 0;
 
-        for(int i = 0; i <= k-1; i++)
-        {
-            sum += isVowel(chars[i])? 1:0;
+        // Count vowels in the first window of size k
+        for (int i = 0; i < k; i++) {
+            if (vowels.contains(s.charAt(i))) {
+                currentVowelsCount++;
+            }
         }
-        
-        int max = sum;
+        maxVowelsCount = currentVowelsCount;
 
-        for(int i = k; i<len; i++)
-        {
-            sum -= isVowel(chars[i-k])? 1:0;
-            sum += isVowel(chars[i])? 1:0;
-            
-            max = Math.max(max, sum);
+        // Slide the window across the string
+        for (int i = k; i < s.length(); i++) {
+            // Remove the character going out of the window
+            if (vowels.contains(s.charAt(i - k))) {
+                currentVowelsCount--;
+            }
+            // Add the character coming into the window
+            if (vowels.contains(s.charAt(i))) {
+                currentVowelsCount++;
+            }
+            // Update maxVowelsCount
+            maxVowelsCount = Math.max(maxVowelsCount, currentVowelsCount);
         }
-        return max;
+
+        return maxVowelsCount;
     }
 
-    public static boolean isVowel(char p)
+    /*public static boolean isVowel(char p)
     {
         if(p=='a' || p=='e' || p=='i' || p=='o' || p=='u') return true;
         return false;
-    }
+    }*/
 }
