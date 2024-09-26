@@ -3,7 +3,7 @@ class Solution
     public int arrangeCoins(int n) 
     {
         /*
-
+        
         1 + 2 + 3 + ... + x = n
         (1 + x) * x / 2 = n
 
