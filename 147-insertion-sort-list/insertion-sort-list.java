@@ -12,36 +12,37 @@ class Solution
 {
     public ListNode insertionSortList(ListNode head) 
     {
-        if (head == null) return head;
+        // Edge case: return the list if it's empty or has only one node
+        if (head == null || head.next == null) return head;
 
-        ListNode dummy = new ListNode(0);
-        dummy.next = head;
+        ListNode dummy = new ListNode(0);  // Dummy node to act as the head of the sorted list
+        ListNode current = head;           // Pointer to traverse the input list
+        ListNode prevSorted = dummy;       // Pointer to traverse the sorted list
+        ListNode nextNode;                 // Stores the next node to be processed
 
-        ListNode prev = head;
-        ListNode curr = head.next;
-
-        while (curr != null) 
+        // Iterate through the original list
+        while (current != null) 
         {
-            if (prev.val <= curr.val) 
-            {
-                prev = curr;
-                curr = curr.next;
-            } 
-            else 
-            {
-                ListNode temp = dummy;
-                while (temp.next != null && temp.next.val < curr.val) 
-                {
-                    temp = temp.next;
-                }
-                prev.next = curr.next;
-                curr.next = temp.next;
+            nextNode = current.next;  // Cache the next node before modifying `current.next`
 
-                temp.next = curr;
-                curr = prev.next;
+            // If the current node is smaller than the previous sorted node, reset`prevSorted`
+            if (prevSorted.val >= current.val) prevSorted = dummy;
+
+            // Find the correct position to insert the current node in the sorted part
+            while (prevSorted.next != null && prevSorted.next.val < current.val) 
+            {
+                prevSorted = prevSorted.next;
             }
+
+            // Insert `current` between `prevSorted` and `prevSorted.next`
+            current.next = prevSorted.next;
+            prevSorted.next = current;
+
+            // Move to the next node in the unsorted list
+            current = nextNode;
         }
 
+        // Return the head of the sorted list, skipping the dummy node
         return dummy.next;
     }
 }
